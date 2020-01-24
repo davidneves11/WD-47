@@ -2,20 +2,20 @@
     const btnAjuda = document.querySelector("#btnAjuda");
     btnAjuda.addEventListener('click',function(){
 
-        // ************** Capítulo  **************
+        // ************** Exercício Capítulo 21  **************
         /* const ajudas = [
             "Bem vindo ao Ceep",
             "Clique no btn Linhas para mudar o layout"
         ] */
 
-        // ************** Capítulo  **************
+        // ************** Exercício Capítulo 22 **************
 
         /* const ajudas = [
              {conteudo: "Bem vindo ao Ceep", cor: "#F05450"}
             ,{conteudo: "Clique no btn Linhas para mudar o layout", cor: "#92C4EC"}
         ] */
 
-        // ************** Capítulo  **************
+        // ************** Exercício Capítulo 25 **************
 
         const xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://ceep.herokuapp.com/cartoes/instrucoes')

@@ -3,6 +3,7 @@
 
 let numeroDoCartao = 0
 
+//Função que cria o cartão e adiciona no mural
 window.adicionaCartaoNoMural = function(cartaoObj){
     numeroDoCartao++
             const conteudoDoCartao = cartaoObj.conteudo;
@@ -43,26 +44,26 @@ window.adicionaCartaoNoMural = function(cartaoObj){
             </div>
             <p class="cartao-conteudo" contenteditable tabindex="0">${conteudoDoCartao}</p>
           </article>`)
-
+            //Focar no cartão com o teclado
              cartao.on("focusin",function(){
                 cartao.addClass("cartao--focado");
             })
-
+            //Desfocar no cartão com o teclado
             cartao.on("focusout",function(){
                 cartao.removeClass("cartao--focado");
             }) 
-
+            //Mudança das cores no cartão
              cartao.on("change", ".opcoesDoCartao-radioTipo", function(event){
                 cartao.css("background-color", event.target.value);
             })
-
+            //Utilizar as teclas Enter e espaço para trocar a cor do cartão
             cartao.on("keydown", function(event){
                 const elementoSelecionado = event.target;
                 if( $(elementoSelecionado).hasClass("opcoesDoCartao-opcao") && (event.key === "Enter" || event.key === " ")){
                     elementoSelecionado.click();
                 }
             }) 
-
+            //Remoção do cartão
            cartao.on("click", function(event){
                 const elementoSelecionado = event.target;
                 if(elementoSelecionado.classList.contains("opcoesDoCartao-remove")){
@@ -72,9 +73,10 @@ window.adicionaCartaoNoMural = function(cartaoObj){
                     })
                 }
             }) 
-            
+          //Adiciona o cartão no mural
           $(".mural").append(cartao);
         }
+        // ************** Exercício Capítulo 27 **************
         $.ajax({
           url: 'https://ceep.herokuapp.com/cartoes/carregar'
           ,method: 'GET'
