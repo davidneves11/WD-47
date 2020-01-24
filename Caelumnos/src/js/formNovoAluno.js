@@ -15,5 +15,7 @@
             </tr>
         `);
         tabelaListagemDeAlunos.append(elementoNovoAluno);
+
+
     })
 })();
