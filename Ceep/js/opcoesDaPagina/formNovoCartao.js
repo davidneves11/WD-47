@@ -19,8 +19,22 @@
             })
 
             form.insertBefore(msgErro, btnSubmit);
-        }else{          
-            adicionaCartaoNoMural({conteudo: textarea.value});
+        }else{      
+            // adicionaCartaoNoMural({conteudo: textarea.value});   
+           
+            // Capítulo 29.4 - quebra de Linha
+            // adicionaCartaoNoMural({conteudo: textarea.value.trim().replace(/\n/g,"<br>")});
+
+            //Capítulo 29.4 (Opcional)- Fica em negrito
+            function negrito (){
+                var bold = /\*\*(\S(.*?\S)?)\*\*/gm;
+                var html = textarea.value.replace(bold, '<strong>$1</strong>');            
+                return html;
+                 
+             }
+             adicionaCartaoNoMural({conteudo: negrito()});
+
+            //Capítulo 29.4 (Opcional)- Fica em itálico
         }  
         //Limpa o textarea
         textarea.value = "";  
