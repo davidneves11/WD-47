@@ -6,8 +6,29 @@ let numeroDoCartao = 0
 //Função que cria o cartão e adiciona no mural
 window.adicionaCartaoNoMural = function(cartaoObj){
     numeroDoCartao++
-            const conteudoDoCartao = cartaoObj.conteudo;
-            const cartao = $(`<article id="cartao_${numeroDoCartao}" class="cartao" tabindex="0" style="background-color:${cartaoObj.cor}">
+            const conteudoDoCartao = cartaoObj.conteudo;   
+            
+            // Capítulo 29.8 - Melhorando a visualização dos cartões
+            const quebras = conteudoDoCartao.split("<br>").length;
+            const totalDeLetras = conteudoDoCartao.replace(/<br>/g, " ").length;
+
+            let ultimoMaior = "";
+            conteudoDoCartao.replace(/<br>/g, " ").split(" ").forEach(function (palavra){
+                if(palavra.length > ultimoMaior.length){
+                  ultimoMaior = palavra
+                }
+            });
+
+            const tamMaior = ultimoMaior.length;
+            let tipoCartao = "cartao--textoPequeno";
+
+            if(tamMaior < 9 && quebras < 5 &&totalDeLetras < 55){
+              tipoCartao = "cartao--textoGrande";
+            }else if (tamMaior < 12 && quebras < 6 && totalDeLetras < 75){
+              tipoCartao = "cartao--textoMedio";
+            }
+
+            const cartao = $(`<article id="cartao_${numeroDoCartao}" class="cartao ${tipoCartao}" tabindex="0" style="background-color:${cartaoObj.cor}">
             <div class="opcoesDoCartao">
               <button class="opcoesDoCartao-remove opcoesDoCartao-opcao" tabindex="0">
                 <svg>
@@ -52,18 +73,18 @@ window.adicionaCartaoNoMural = function(cartaoObj){
             cartao.on("focusout",function(){
                 cartao.removeClass("cartao--focado");
             }) 
-            //Mudança das cores no cartão
+            //Mudar a cor do cartão
              cartao.on("change", ".opcoesDoCartao-radioTipo", function(event){
                 cartao.css("background-color", event.target.value);
             })
-            //Utilizar as teclas Enter e espaço para trocar a cor do cartão
+            //Utilizar as teclas Enter e Espaço para trocar a cor do cartão
             cartao.on("keydown", function(event){
                 const elementoSelecionado = event.target;
                 if( $(elementoSelecionado).hasClass("opcoesDoCartao-opcao") && (event.key === "Enter" || event.key === " ")){
                     elementoSelecionado.click();
                 }
             }) 
-            //Remoção do cartão
+            //Exclusão do cartão
            cartao.on("click", function(event){
                 const elementoSelecionado = event.target;
                 if(elementoSelecionado.classList.contains("opcoesDoCartao-remove")){

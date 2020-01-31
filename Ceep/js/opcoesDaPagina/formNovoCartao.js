@@ -22,10 +22,10 @@
         }else{      
             // adicionaCartaoNoMural({conteudo: textarea.value});   
            
-            // Capítulo 29.4 - quebra de Linha
+            // Capítulo 29.4 - Quebra de Linha
             // adicionaCartaoNoMural({conteudo: textarea.value.trim().replace(/\n/g,"<br>")});
 
-            //Capítulo 29.4 (Opcional)- Fica em negrito
+            // Capítulo 29.4 (Opcional)- Fica em negrito
             // function negrito (){
             //     const bold = /\*\*(\S(.*?\S)?)\*\*/gm;
             //     const html = textarea.value.replace(bold, '<strong>$1</strong>');            
@@ -33,7 +33,7 @@
             //  }
             //  adicionaCartaoNoMural({conteudo: negrito()});
 
-            //Capítulo 29.4 (Desafio)- Fica em itálico
+            // Capítulo 29.4 (Desafio)- Fica em itálico
             // function italico (){
             //     const italic = /\*(\S(.*?\S)?)\*/gm;
             //     const html = textarea.value.replace(italic, '<em>$1</em>');            
@@ -43,14 +43,14 @@
 
              //Utilizando as três RegEx
              
-             function tratamentoConteudoCartao (){
+             function tratarConteudoCartao (){
                 const bold = /\*\*(\S(.*?\S)?)\*\*/gm;
                 const italic = /\*(\S(.*?\S)?)\*/gm;
                 const html = textarea.value.replace(bold, '<strong>$1</strong>').replace(italic, '<em>$1</em>').trim().replace(/\n/g,"<br>");            
                 return html;
                  
              }
-             adicionaCartaoNoMural({conteudo: tratamentoConteudoCartao()});
+             adicionaCartaoNoMural({conteudo: tratarConteudoCartao()});
         }  
         //Limpa o textarea
         textarea.value = "";  
