@@ -26,15 +26,31 @@
             // adicionaCartaoNoMural({conteudo: textarea.value.trim().replace(/\n/g,"<br>")});
 
             //Capítulo 29.4 (Opcional)- Fica em negrito
-            function negrito (){
-                var bold = /\*\*(\S(.*?\S)?)\*\*/gm;
-                var html = textarea.value.replace(bold, '<strong>$1</strong>');            
+            // function negrito (){
+            //     const bold = /\*\*(\S(.*?\S)?)\*\*/gm;
+            //     const html = textarea.value.replace(bold, '<strong>$1</strong>');            
+            //     return html;    
+            //  }
+            //  adicionaCartaoNoMural({conteudo: negrito()});
+
+            //Capítulo 29.4 (Desafio)- Fica em itálico
+            // function italico (){
+            //     const italic = /\*(\S(.*?\S)?)\*/gm;
+            //     const html = textarea.value.replace(italic, '<em>$1</em>');            
+            //     return html;   
+            //  }
+            //  adicionaCartaoNoMural({conteudo: italico()});
+
+             //Utilizando as três RegEx
+             
+             function tratamentoConteudoCartao (){
+                const bold = /\*\*(\S(.*?\S)?)\*\*/gm;
+                const italic = /\*(\S(.*?\S)?)\*/gm;
+                const html = textarea.value.replace(bold, '<strong>$1</strong>').replace(italic, '<em>$1</em>').trim().replace(/\n/g,"<br>");            
                 return html;
                  
              }
-             adicionaCartaoNoMural({conteudo: negrito()});
-
-            //Capítulo 29.4 (Opcional)- Fica em itálico
+             adicionaCartaoNoMural({conteudo: tratamentoConteudoCartao()});
         }  
         //Limpa o textarea
         textarea.value = "";  
