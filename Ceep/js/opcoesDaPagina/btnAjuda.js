@@ -1,6 +1,6 @@
-;(function(){
+; (function () {
     const btnAjuda = document.querySelector("#btnAjuda");
-    btnAjuda.addEventListener('click',function(){
+    btnAjuda.addEventListener('click', function () {
 
         // ************** Exercício Capítulo 21  **************
         /* const ajudas = [
@@ -21,13 +21,13 @@
         xhr.open('GET', 'https://ceep.herokuapp.com/cartoes/instrucoes')
         xhr.responseType = 'json'
         xhr.send();
-        xhr.addEventListener('load', function(){
+        xhr.addEventListener('load', function () {
             const objeto = xhr.response;
             const ajudas = objeto.instrucoes;
-            
-            ajudas.forEach(function(ajuda){
+
+            ajudas.forEach(function (ajuda) {
                 /* alert(ajuda); */
-               adicionaCartaoNoMural(ajuda);
+                adicionaCartaoNoMural(ajuda);
             })
         })
     })

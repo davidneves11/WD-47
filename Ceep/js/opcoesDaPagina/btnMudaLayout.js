@@ -19,9 +19,9 @@ function mudaLayout() {
 //Outra forma de fazer
 // function mudalayout(){
 //   if(mural.classList.contains('mural--linha')){
-//     mural.classList.remove('mural--linha')
+//     mural.classList.remove('mural--linha');
 //   }else{
-//     mural.classList.add('mural--linha')
+//     mural.classList.add('mural--linha');
 //   }
 // }
 

@@ -1,34 +1,34 @@
-(function(){
-    "use strict"
+(function () {
+  "use strict"
 
-let numeroDoCartao = 0
+  let numeroDoCartao = 0
 
-//Função que cria o cartão e adiciona no mural
-window.adicionaCartaoNoMural = function(cartaoObj){
+  // Função que cria o cartão e adiciona no mural
+  window.adicionaCartaoNoMural = function (cartaoObj) {
     numeroDoCartao++
-            const conteudoDoCartao = cartaoObj.conteudo;   
-            
-            // Capítulo 29.8 - Melhorando a visualização dos cartões
-            const quebras = conteudoDoCartao.split("<br>").length;
-            const totalDeLetras = conteudoDoCartao.replace(/<br>/g, " ").length;
+    const conteudoDoCartao = cartaoObj.conteudo;
 
-            let ultimoMaior = "";
-            conteudoDoCartao.replace(/<br>/g, " ").split(" ").forEach(function (palavra){
-                if(palavra.length > ultimoMaior.length){
-                  ultimoMaior = palavra
-                }
-            });
+    // Capítulo 29.8 - Melhorando a visualização dos cartões
+    const quebras = conteudoDoCartao.split("<br>").length;
+    const totalDeLetras = conteudoDoCartao.replace(/<br>/g, " ").length;
 
-            const tamMaior = ultimoMaior.length;
-            let tipoCartao = "cartao--textoPequeno";
+    let ultimoMaior = "";
+    conteudoDoCartao.replace(/<br>/g, " ").split(" ").forEach(function (palavra) {
+      if (palavra.length > ultimoMaior.length) {
+        ultimoMaior = palavra
+      }
+    });
 
-            if(tamMaior < 9 && quebras < 5 &&totalDeLetras < 55){
-              tipoCartao = "cartao--textoGrande";
-            }else if (tamMaior < 12 && quebras < 6 && totalDeLetras < 75){
-              tipoCartao = "cartao--textoMedio";
-            }
+    const tamMaior = ultimoMaior.length;
+    let tipoCartao = "cartao--textoPequeno";
 
-            const cartao = $(`<article id="cartao_${numeroDoCartao}" class="cartao ${tipoCartao}" tabindex="0" style="background-color:${cartaoObj.cor}">
+    if (tamMaior < 9 && quebras < 5 && totalDeLetras < 55) {
+      tipoCartao = "cartao--textoGrande";
+    } else if (tamMaior < 12 && quebras < 6 && totalDeLetras < 75) {
+      tipoCartao = "cartao--textoMedio";
+    }
+
+    const $cartao = $(`<article id="cartao_${numeroDoCartao}" class="cartao ${tipoCartao}" tabindex="0" style="background-color:${cartaoObj.cor}">
             <div class="opcoesDoCartao">
               <button class="opcoesDoCartao-remove opcoesDoCartao-opcao" tabindex="0">
                 <svg>
@@ -65,49 +65,49 @@ window.adicionaCartaoNoMural = function(cartaoObj){
             </div>
             <p class="cartao-conteudo" contenteditable tabindex="0">${conteudoDoCartao}</p>
           </article>`)
-            //Focar no cartão com o teclado
-             cartao.on("focusin",function(){
-                cartao.addClass("cartao--focado");
-            })
-            //Desfocar no cartão com o teclado
-            cartao.on("focusout",function(){
-                cartao.removeClass("cartao--focado");
-            }) 
-            //Mudar a cor do cartão
-             cartao.on("change", ".opcoesDoCartao-radioTipo", function(event){
-                cartao.css("background-color", event.target.value);
-            })
-            //Utilizar as teclas Enter e Espaço para trocar a cor do cartão
-            cartao.on("keydown", function(event){
-                const elementoSelecionado = event.target;
-                if( $(elementoSelecionado).hasClass("opcoesDoCartao-opcao") && (event.key === "Enter" || event.key === " ")){
-                    elementoSelecionado.click();
-                }
-            }) 
-            //Exclusão do cartão
-           cartao.on("click", function(event){
-                const elementoSelecionado = event.target;
-                if(elementoSelecionado.classList.contains("opcoesDoCartao-remove")){
-                    cartao.addClass('cartao--some');
-                    cartao.on("transitionend", function(){
-                        cartao.remove();
-                    })
-                }
-            }) 
-          //Adiciona o cartão no mural
-          $(".mural").append(cartao);
-        }
-        // ************** Exercício Capítulo 27 **************
-        $.ajax({
-          url: 'https://ceep.herokuapp.com/cartoes/carregar'
-          ,method: 'GET'
-          ,data: {usuario: "seuemail@email.com.br"}
-          ,dataType: "jsonp"
-          ,success: function(objeto){
-            const cartoes = objeto.cartoes
-            cartoes.forEach(function (cartao){
-                adicionaCartaoNoMural(cartao);
-            })
-          }
+    //Focar no cartão com o teclado
+    $cartao.on("focusin", function () {
+      $cartao.addClass("cartao--focado");
+    })
+    //Desfocar no cartão com o teclado
+    $cartao.on("focusout", function () {
+      $cartao.removeClass("cartao--focado");
+    })
+    //Mudar a cor do cartão
+    $cartao.on("change", ".opcoesDoCartao-radioTipo", function (event) {
+      $cartao.css("background-color", event.target.value);
+    })
+    //Utilizar as teclas Enter e Espaço para trocar a cor do cartão
+    $cartao.on("keydown", function (event) {
+      const elementoSelecionado = event.target;
+      if ($(elementoSelecionado).hasClass("opcoesDoCartao-opcao") && (event.key === "Enter" || event.key === " ")) {
+        elementoSelecionado.click();
+      }
+    })
+    //Exclusão do cartão
+    $cartao.on("click", function (event) {
+      const elementoSelecionado = event.target;
+      if (elementoSelecionado.classList.contains("opcoesDoCartao-remove")) {
+        $cartao.addClass('cartao--some');
+        $cartao.on("transitionend", function () {
+          $cartao.remove();
         })
+      }
+    })
+    //Adiciona o cartão no mural
+    $(".mural").append($cartao);
+  }
+  // ************** Exercício Capítulo 27 **************
+  $.ajax({
+    url: 'https://ceep.herokuapp.com/cartoes/carregar'
+    , method: 'GET'
+    , data: { usuario: "seuemail@email.com.br" }
+    , dataType: "jsonp"
+    , success: function (objeto) {
+      const cartoes = objeto.cartoes;
+      cartoes.forEach(function (cartao) {
+        adicionaCartaoNoMural(cartao);
+      })
+    }
+  })
 })();
