@@ -13,7 +13,7 @@
 
         limpaCampos(formNovoAluno);
     });
-    
+
     function limpaCampos(form) {
         formNovoAluno.matriculaAluno.value = '';
         formNovoAluno.nomeAluno.value = '';

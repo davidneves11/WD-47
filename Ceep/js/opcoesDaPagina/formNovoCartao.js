@@ -42,7 +42,6 @@
             //  adicionaCartaoNoMural({conteudo: italico()});
 
             // Utilizando as três RegEx
-
             function tratarConteudoCartao() {
                 const bold = /\*\*(\S(.*?\S)?)\*\*/gm;
                 const italic = /\*(\S(.*?\S)?)\*/gm;
