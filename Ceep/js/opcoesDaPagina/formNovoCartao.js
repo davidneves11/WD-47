@@ -43,8 +43,8 @@
 
             // Utilizando as três RegEx
             function tratarConteudoCartao() {
-                const bold = /\*\*(\S(.*?\S)?)\*\*/gm;
-                const italic = /\*(\S(.*?\S)?)\*/gm;
+                const bold = /\*\*(.*?)\*\*/gm;
+                const italic = /\*(.*?)\*/gm;
                 const html = textarea.value.replace(bold, '<strong>$1</strong>').replace(italic, '<em>$1</em>').trim().replace(/\n/g, "<br>");
                 return html;
             }

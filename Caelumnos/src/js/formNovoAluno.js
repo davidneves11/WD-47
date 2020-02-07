@@ -1,32 +1,30 @@
 (function () {
     const form = document.querySelector("#formNovoAluno");
-
+    let numeroMatricula = 0;
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        if (form.matriculaAluno.value.trim().length === 0 && form.nomeAluno.value.trim().length === 0) {
-            alert('Digite o número da matrícula e o nome do aluno');
-        } else if (form.matriculaAluno.value.trim().length === 0) {
-            alert('Digite o número da matrícula do aluno');
-        } else if (form.nomeAluno.value.trim().length === 0) {
-            alert('Digite o nome do aluno')
-        } else {
-            const matricula = form.querySelector("#matriculaAluno").value;
-            const nome = form.querySelector("#nomeAluno").value;
 
-            const tabelaListagemDeAlunos = $('#listagemDeAlunos');
-            const elementoNovoAluno = $(`
-                <tr>
-                    <td>${matricula}</td>
-                    <td id="nome" contenteditable>${nome}</td>
-                    <td><button data-type="delete" class="btn btn-danger removeAluno">Excluir</td>
+        numeroMatricula++
+        const nomeCurso = form.querySelector("#nomeCurso").value;
+        const nome = form.querySelector("#nomeAluno").value;
+
+        const tabelaListagemDeAlunos = $('#listagemDeAlunos');
+        const elementoNovoAluno = $(`
+                <tr class="aluno">
+                    <td class="pesquisa linha--formata">${numeroMatricula}</td>
+                    <td class="pesquisa linha--formata nomeAluno">${nome}</td>
+                    <td class="pesquisa linha--formata">${nomeCurso}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning">Alterar Nome</button>
+                        <button data-type="delete" class="btn btn-danger removeAluno">Excluir</button>
+                    </td>
                 </tr>
             `);
-            tabelaListagemDeAlunos.append(elementoNovoAluno);
+        tabelaListagemDeAlunos.append(elementoNovoAluno);
 
-            form.matriculaAluno.value = '';
-            form.nomeAluno.value = '';
-        }
+        form.nomeCurso.value = '';
+        form.nomeAluno.value = '';
 
     })
 })();

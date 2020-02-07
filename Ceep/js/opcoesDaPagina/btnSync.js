@@ -10,10 +10,10 @@
 
         const cartoes = document.querySelectorAll(".cartao");
         const infosDoMural = {
-            usuario: "seuemail@email.com.br"
+            usuario: "David Neves"
             , cartoes: Array.from($(".cartao")).map(function (cartao) {
                 return {
-                    conteudo: cartao.querySelector(".cartao-conteudo").textContent,
+                    conteudo: cartao.querySelector(".cartao-conteudo").innerHTML,
                     cor: getComputedStyle(cartao).getPropertyValue("background-color")
                 }
             })

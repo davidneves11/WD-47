@@ -36,8 +36,7 @@
                 </svg>
               </button>
       
-              <input type="radio" name="corDoCartao${numeroDoCartao}" value="#EBEF40" id="corPadrão-cartao${numeroDoCartao}" class="opcoesDoCartao-radioTipo"
-                checked>
+              <input type="radio" name="corDoCartao${numeroDoCartao}" value="#EBEF40" id="corPadrão-cartao${numeroDoCartao}" class="opcoesDoCartao-radioTipo">
               <label for="corPadrão-cartao${numeroDoCartao}" class="opcoesDoCartao-tipo opcoesDoCartao-opcao" style="color: #EBEF40;"
                 tabindex="0">
                 Padrão
@@ -65,6 +64,7 @@
             </div>
             <p class="cartao-conteudo" contenteditable tabindex="0">${conteudoDoCartao}</p>
           </article>`)
+
     //Focar no cartão com o teclado
     $cartao.on("focusin", function () {
       $cartao.addClass("cartao--focado");
@@ -101,7 +101,7 @@
   $.ajax({
     url: 'https://ceep.herokuapp.com/cartoes/carregar'
     , method: 'GET'
-    , data: { usuario: "seuemail@email.com.br" }
+    , data: { usuario: "David Neves" }
     , dataType: "jsonp"
     , success: function (objeto) {
       const cartoes = objeto.cartoes;

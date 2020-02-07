@@ -1,4 +1,17 @@
-.linha--some {
-	opacity: 0;
-	transition: 0.5s;
+.linha--formata{
+	vertical-align: middle!important
+}
+
+.elementos--disposicao {
+	padding-top: .5em;
+	padding-bottom: .5em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.rodape {
+    padding: 2rem 1rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
 }
