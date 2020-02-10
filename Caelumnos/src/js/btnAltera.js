@@ -1,13 +1,7 @@
 (function () {
 
-    // Exclusão do aluno
     const tabelaDeAlunos = document.querySelector("#listagemDeAlunos");
-    tabelaDeAlunos.addEventListener('click', function (event) {
-        if (event.target.classList.contains("removeAluno") && confirm("Tem certeza que deseja excluir?")) {
-            event.target.closest('tr').remove();
-        }
-    })
-
+    
     // Muda o texto do botão de alterar
     tabelaDeAlunos.addEventListener('click', function (event) {
         if (event.target.classList.contains('btn-warning')) {
@@ -19,7 +13,7 @@
         }
     })
 
-    // Coloca e tira o atributo contentEditable para o nome do aluno e foca no campo nome
+    // Adiciona e remove o atributo contentEditable para o nome do aluno e foca no campo nome
     tabelaDeAlunos.addEventListener('click', function (event) {
         if (event.target.classList.contains('btn-warning')) {
             if (event.target.textContent == "Alterando...") {
@@ -30,20 +24,6 @@
                 const nomeAluno = event.target.closest('.aluno').querySelector('.nomeAluno');
                 nomeAluno.removeAttribute("contentEditable");
             }
-        }
-    })
-
-    // Campo de pesquisa
-    const $campoBusca = $('#busca');
-    $campoBusca.on('input', function () {
-        const $textoCampoBusca = $(this).val().trim();
-
-        if ($textoCampoBusca.length > 0) {
-            $('.aluno').hide().filter(function () {
-                return $(this).find(".pesquisa").text().match(new RegExp($textoCampoBusca, "i"));
-            }).show();
-        } else {
-            $('.aluno').show();
         }
     })
 
@@ -67,6 +47,4 @@
             }
         }
     })
-
 })();
-

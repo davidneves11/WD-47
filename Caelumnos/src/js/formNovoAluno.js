@@ -1,11 +1,13 @@
 (function () {
+   
     const form = document.querySelector("#formNovoAluno");
     let numeroMatricula = 0;
+   
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-
         numeroMatricula++
+
         const nomeCurso = form.querySelector("#nomeCurso").value;
         const nome = form.querySelector("#nomeAluno").value;
 
@@ -21,6 +23,7 @@
                     </td>
                 </tr>
             `);
+
         tabelaListagemDeAlunos.append(elementoNovoAluno);
 
         form.nomeCurso.value = '';
