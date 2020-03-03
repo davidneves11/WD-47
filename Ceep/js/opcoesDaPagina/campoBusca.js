@@ -8,7 +8,7 @@
         if ($textoCampoBusca.length > 0) {
             $('.cartao').hide().filter(function () {
                 return $(this).find(".cartao-conteudo").text().match(new RegExp($textoCampoBusca, "i"));
-            }).show();
+            }).show().replace("$textoCampoBusca","<span>${$textoCampoBusca}</span>");
         } else {
             $('.cartao').show();
         }

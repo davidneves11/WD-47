@@ -3,12 +3,12 @@
     $btnSync.click(function () {
         $btnSync.addClass("botaoSync--esperando");
         $btnSync.removeClass("botaoSync--sincronizado");
+        
         //Configura a requisição ao servidor
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'https://ceep.herokuapp.com/cartoes/salvar');
         xhr.setRequestHeader("Content-Type", "application/json");
 
-        const cartoes = document.querySelectorAll(".cartao");
         const infosDoMural = {
             usuario: "David Neves"
             , cartoes: Array.from($(".cartao")).map(function (cartao) {
@@ -20,7 +20,7 @@
         }
 
         // Outra forma de fazer
-        // const $cartoes = $('.cartao').toArray().map(function(cartao){
+        // const cartoes = $('.cartao').toArray().map(function(cartao){
         //     return {
         //         conteudo: cartao.querySelector('.cartao-conteudo').textContent,
         //         cor: getComputedStyle(cartao).getPropertyValue('background-color')
@@ -29,7 +29,7 @@
 
         // const infosDoMural = {
         //     usuario: "seuemail@email.com.br",
-        //     cartoes: $cartoes
+        //     cartoes: cartoes
         // }
 
         xhr.send(JSON.stringify(infosDoMural));
