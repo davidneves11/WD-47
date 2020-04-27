@@ -1,3 +1,11 @@
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 .linha--formata {
     vertical-align: middle!important
 }
@@ -12,9 +20,9 @@
 
 .rodape {
     position: absolute;
+    right: 0;
     bottom: 0;
-    width: 100%;
-    padding: 2rem 1rem;
-    background-color: #e9ecef;
-    border-radius: .3rem;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
 }
